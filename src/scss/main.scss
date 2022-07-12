@@ -1,0 +1,140 @@
+@import './reset';
+@import './card';
+
+$clr-bg: #f5f5f5;
+
+.wrapper {
+	max-width: 1000px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.bg {
+	background: $clr-bg;
+}
+
+.body-title {
+	width: 100%;
+	text-align: center;
+	margin: 20px auto;
+	font-size: 18px;
+	text-transform: uppercase;
+	font-family: 'Roboto', sans-serif;
+}
+
+.cards-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	row-gap: 75px;
+	column-gap: 20px;
+	padding: 10px;
+	padding-bottom: 60px;
+}
+
+.popapMessage {
+	display: none;
+	transition: opacity 300ms ease-in-out;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	width: 140px;
+	height: 100px;
+	bottom: 0;
+	left: 0;
+	cursor: pointer;
+	margin: 20px;
+
+	.circle {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 90px;
+		height: 90px;
+		border-radius: 50%;
+		background: rgb(117, 169, 218);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+
+	.envelope {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: 5;
+		font-size: 85px;
+		transform: translate(0, -50%);
+
+		.dog {
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 5;
+			font-size: 25px;
+			padding: 4px;
+			background: white;
+			border-radius: 50%;
+			transform: translate(10px, 2px);
+		}
+	}
+
+	.closeButton {
+		position: absolute;
+		top: 0;
+		right: 50%;
+		transform: translate(30px, 0);
+		font-size: 20px;
+		width: 20px;
+		height: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		cursor: pointer;
+		transition: transform 300ms ease-in-out;
+
+
+		&:hover {
+			transition: transform 300ms ease-in-out;
+			transform: translate(30px, 0) rotate(90deg);
+		}
+	}
+	&:hover {
+		transition: opacity 300ms ease-in-out;
+		opacity: .7;
+	}
+}
+
+
+@media only screen and (max-width: 1000px) {
+	.wrapper {
+		max-width: 900px;
+	}
+}
+@media only screen and (max-width: 900px) {
+	.wrapper {
+		max-width: 730px;
+	}
+	.cards-container {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media only screen and (max-width: 700px) {
+	.wrapper {
+		max-width: 600px;
+	}
+}
+@media only screen and (max-width: 600px) {
+	.wrapper {
+		max-width: 400px;
+	}
+	.cards-container {
+		grid-template-columns: 1fr;
+	}
+}
+@media only screen and (max-width: 500px) {
+	.wrapper {
+		max-width: 350px;
+	}
+}

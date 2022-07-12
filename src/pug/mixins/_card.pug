@@ -1,0 +1,50 @@
+mixin svg(name)
+  svg
+    use(xlink:href=`./images/sprites.svg#${name}`)
+
+mixin offers(arrOffers)
+  each elem in arrOffers
+    li(class= elem.color)
+      span= elem.title
+
+mixin stars(number)
+  li: i(class= `${1 <= number ? 'fas' : 'far'} fa-star`)
+  li: i(class= `${2 <= number ? 'fas' : 'far'} fa-star`)
+  li: i(class= `${3 <= number ? 'fas' : 'far'} fa-star`)
+  li: i(class= `${4 <= number ? 'fas' : 'far'} fa-star`)
+  li: i(class= `${5 <= number ? 'fas' : 'far'} fa-star`)
+
+mixin card(card)
+  .card         
+    .card__wrapper                                                                                                                                                                                                        
+      .card__id-card
+        span.title Код товару:
+        span.value #{card.id}
+
+      .card__image
+        img(src=card.img.src, alt=card.img.alt)
+
+      .card__offers
+        +offers(card.offers.list)
+
+      .card__title #{card.name}
+
+      .card__reviews
+        ul
+          +stars(card.reviews.stars)
+        span.card__reviews_count #{card.reviews.count} відгуків
+
+      .card__price 
+        .card__price_title ціна
+        .card__price_value #{card.price.price} грн
+          span.card__price_cashback -#{card.price.cashback} грн кешбек
+        .card__price_oldValue #{card.price.oldPrice}
+          span.card__price_currency грн
+
+      .card__bottom-line
+        .card__bottom-box
+          button.card__button Купити
+          .card__button_favorite
+            i(class= card.isFavoriteProduct ? 'fas fa-heart' : 'far fa-heart')
+          .card__compare-products 
+            i(class='fas fa-balance-scale')
